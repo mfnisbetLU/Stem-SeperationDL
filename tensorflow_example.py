@@ -32,10 +32,11 @@ print('Second song done processing')
 # Split data into test and training sets
 x_train, x_test, y_train, y_test = train_test_split(STFTdbFullSong, STFTdbTrack, test_size=0.5, shuffle=False)
 
+# Shallow network for testing tensorflow
 shape = x_train.shape
-inputs = tf.keras.Input(shape=(9598))
-hidden_layers = tf.keras.layers.Dense(72, activation=tf.nn.relu)(inputs)
-output = tf.keras.layers.Dense(12, activation=tf.nn.softmax)(hidden_layers)
+inputs = tf.keras.Input(shape=shape[1])
+hidden_layers = tf.keras.layers.Dense(12, activation=tf.nn.relu)(inputs)
+output = tf.keras.layers.Dense(1, activation=tf.nn.softmax)(hidden_layers)
 model = tf.keras.Model(inputs=inputs, outputs=output)
 model.compile(optimizer="Adam", loss="mse", metrics=["mae"])
 hist = model.fit(x_train, y_train,
