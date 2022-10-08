@@ -1,4 +1,5 @@
 from scipy.signal import stft, istft
+import numpy as np
 
 def reconstruct(spectrogram, sample_rate, nperseg, iters=100):
     length = istft(spectrogram, sample_rate, nperseg=nperseg)[1].shape[0]
