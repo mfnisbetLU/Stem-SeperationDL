@@ -6,7 +6,7 @@ import librosa.display
 # Sources: https://www.pythonpool.com/spectrogram-python/
 
 # Path to audio file
-audio = "E:\Code\DSIP_Project\Stem-SeperationDL\EpicSuspensefulDemo.wav"
+audio = "SoundFiles\EpicSuspensefulDemo.wav"
 
 # Using standard sample rate for an audio signal we load the audio
 signal, sampleRate = librosa.load(audio, sr=44100)
