@@ -5,7 +5,7 @@ import wave, sys
 # https://www.geeksforgeeks.org/plotting-various-sounds-on-graphs-using-python-and-matplotlib/
 
 # reading the audio file
-raw = wave.open('ssriduvvuri_C_Minor_Chord_Progression_1451.wav')
+raw = wave.open('SoundFiles\EpicSuspensefulDemo.wav')
      
 # reads all the frames
 # -1 indicates all or max frames
