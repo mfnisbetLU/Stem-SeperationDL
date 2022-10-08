@@ -1,6 +1,3 @@
-import os
-from platform import python_version
-
 import matplotlib.pyplot as plt
  
 import librosa
