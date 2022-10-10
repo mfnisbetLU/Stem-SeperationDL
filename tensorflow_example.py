@@ -35,19 +35,19 @@ x_train, x_test, y_train, y_test = train_test_split(STFTdbFullSong, STFTdbTrack,
 # Shallow network for testing tensorflow
 shape = x_train.shape
 inputs = tf.keras.Input(shape=shape[1])
-hidden_layers = tf.keras.layers.Dense(12, activation=tf.nn.relu)(inputs)
-output = tf.keras.layers.Dense(1, activation=tf.nn.softmax)(hidden_layers)
+hidden_layers = tf.keras.layers.Dense(72, activation=tf.nn.leaky_relu)(inputs)
+output = tf.keras.layers.Dense(1, activation=tf.nn.leaky_relu)(hidden_layers)
 model = tf.keras.Model(inputs=inputs, outputs=output)
 model.compile(optimizer="Adam", loss="mse", metrics=["mae"])
 hist = model.fit(x_train, y_train,
     batch_size = 50,
-    epochs = 50,
+    epochs = 1000,
     verbose = 1,
     validation_split = 0.4)
 
 model_test = model.evaluate(x_test, y_test, verbose=2)
 
 # Changing the accuracy into a percentage
-testing_acc = model_test[1]
+testing_acc = model_test[1] * 100
 # Printing the accuracy
 print('Test Accuracy: ', testing_acc,'%')
