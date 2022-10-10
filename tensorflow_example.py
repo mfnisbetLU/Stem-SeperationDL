@@ -48,6 +48,6 @@ hist = model.fit(x_train, y_train,
 model_test = model.evaluate(x_test, y_test, verbose=2)
 
 # Changing the accuracy into a percentage
-testing_acc = model_test[1]*100
+testing_acc = model_test[1]
 # Printing the accuracy
 print('Test Accuracy: ', testing_acc,'%')
