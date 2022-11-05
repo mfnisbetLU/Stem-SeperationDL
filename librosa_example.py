@@ -6,7 +6,7 @@ import librosa.display
 # Sources: https://www.pythonpool.com/spectrogram-python/
 
 # Path to audio file
-audio = "SoundFiles\EpicSuspensefulDemo.wav"
+audio = "SoundFiles\EpicSuspensefulDemo\EpicSuspensefulDemo.wav"
 
 # Using standard sample rate for an audio signal we load the audio
 signal, sampleRate = librosa.load(audio, sr=44100)
@@ -25,3 +25,4 @@ librosa.display.specshow(STFTdb, sr=sampleRate, x_axis='time', y_axis='hz')
 plt.colorbar()
 plt.title('Volume of Frequency over Time (dB)')
 plt.show()
+print("done")

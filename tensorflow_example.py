@@ -14,7 +14,7 @@ import numpy as np
 
 
 # Using standard sample rate for an audio signal we load the audio
-full_audio, sr = librosa.load("SoundFiles\EpicSuspensefulDemo.wav", sr = 44100)
+full_audio, sr = librosa.load("SoundFiles\EpicSuspensefulDemo\EpicSuspensefulDemo.wav", sr = 44100)
 
 # Apply short time fourier transforms on signal
 full_shortTimeFourierTransforms = librosa.stft(full_audio)
@@ -25,7 +25,7 @@ print(STFTdbFullSong)
 
 
 # Using standard sample rate for an audio signal we load the audio
-track_audio, sr = librosa.load("SoundFiles\EpicSuspensefulTracks_Drum_Hit.wav", sr=44100)
+track_audio, sr = librosa.load("SoundFiles\EpicSuspensefulDemo\EpicSuspensefulTracks_Drum_Hit.wav", sr=44100)
 
 # Apply short time fourier transforms on signal
 track_shortTimeFourierTransforms = librosa.stft(track_audio)
