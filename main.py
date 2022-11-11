@@ -1,21 +1,12 @@
-import matplotlib.pyplot as plt
-import numpy as np
+# This is where the main function and GUI should probably go
+# Currently use as a place to test functions
 
-msg = "Hello World!"
-print(msg)
+# Import functions from another file
+from preprocess_slicer import *
+from pydub import AudioSegment
 
-plt.style.use('_mpl-gallery')
+audio_file = "Stem-SeperationDL\SoundFiles\Al James - Schoolboy Facination\mixture.wav"
 
-# make data
-x = np.linspace(0, 10, 100)
-y = 4 + 2 * np.sin(2 * x)
+new_file = audio_preprocess(audio_file,0,30000)
 
-# plot
-fig, ax = plt.subplots()
-
-ax.plot(x, y, linewidth=2.0)
-
-ax.set(xlim=(0, 8), xticks=np.arange(1, 8),
-       ylim=(0, 8), yticks=np.arange(1, 8))
-
-plt.show()
+new_file.export("Stem-SeperationDL\SongExports\Al James - Schoolboy Fascination/NewMix.wav", format="wav")
