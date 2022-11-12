@@ -1,9 +1,11 @@
-# This script takes a wave file, detects and removes any leading silence, normalizes it then slices it into a 30 second segment and returns that segment.
-# Code based on the answers found here:
-# https://stackoverflow.com/questions/29547218/remove-silence-at-the-beginning-and-at-the-end-of-wave-files-with-pydub
-# https://stackoverflow.com/questions/37999150/how-to-split-a-wav-file-into-multiple-wav-files
-
+'''
+This script takes a wave file, detects and removes any leading silence, normalizes it then slices it into a 30 second segment and returns that segment.
+Code based on the answers found here:
+https://stackoverflow.com/questions/29547218/remove-silence-at-the-beginning-and-at-the-end-of-wave-files-with-pydub
+https://stackoverflow.com/questions/37999150/how-to-split-a-wav-file-into-multiple-wav-files
+''' 
 from pydub import AudioSegment, effects
+from scipy.io import wavfile
 
 
 def audio_preprocess(audio_file,trim_start,trim_end):
