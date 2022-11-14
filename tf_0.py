@@ -59,19 +59,19 @@ print('STFT done')
 
 
 # Convert frequency in STFT to dB
-mix_arr = [[]]
+mix_arr = []
 for i in range(len(mix_stft_arr)):
     mix_arr.append(librosa.amplitude_to_db(abs(mix_stft_arr[i])))
 
-bass_arr = [[]]
+bass_arr = []
 for i in range(len(bass_stft_arr)):
     bass_arr.append(librosa.amplitude_to_db(abs(bass_stft_arr[i])))
 print('Conversion to dB done')
 
 
 # Split data into test and train sets
-mix_arr_test = []
-mix_arr_train = []
+mix_arr_test = [[]]
+mix_arr_train = [[]]
 for i in range(len(mix_arr)):
     temp_test, temp_train = np.array_split(mix_arr[i], 2)
     mix_arr_test.append(temp_test) 
@@ -106,10 +106,10 @@ print('Data normalized')
 
 
 # Set up data as np arrays
-mix_arr_test = np.asanyarray(mix_arr_test, dtype=object)
-mix_arr_train = np.asanyarray(mix_arr_train, dtype=object)
-bass_arr_test = np.asanyarray(bass_arr_test, dtype=object)
-bass_arr_train = np.asanyarray(bass_arr_train, dtype=object)
+mix_arr_test = np.asarray(mix_arr_test, dtype=object)
+mix_arr_train = np.asarray(mix_arr_train, dtype=object)
+bass_arr_test = np.asarray(bass_arr_test, dtype=object)
+bass_arr_train = np.asarray(bass_arr_train, dtype=object)
 print('Data converted to Numpy arrays\n\n\n')
 print('Test Shape:', mix_arr_test[1].shape)
 print('Train Shape:', mix_arr_train[1].shape)
@@ -138,13 +138,16 @@ model.summary()
 # Compile model with stocastic gradient descent
 model.compile(optimizer="Adam", loss="binary_crossentropy", metrics=["mae", "accuracy"])
 
-print(mix_arr_train[1])
+print(mix_arr_train[1].shape)
+print(mix_arr_train[2].shape)
+print(mix_arr_train[3].shape)
+print(mix_arr_train[4].shape)
 tf.config.run_functions_eagerly(True)
-hist = model.fit(list(mix_arr_train), list(bass_arr_train),
+hist = model.fit(np.ndarray.tolist(mix_arr_train)[1:], np.ndarray.tolist(bass_arr_train)[1:],
     batch_size = 1,
     epochs = 100,
     verbose = 1,
-    validation_data = (list(mix_arr_test), list(bass_arr_test)),
+    validation_data = (np.ndarray.tolist(mix_arr_test)[1:], np.ndarray.tolist(bass_arr_test)[1:]),
     callbacks=[earlystopping]
 )
 
