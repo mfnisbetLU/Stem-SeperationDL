@@ -3,7 +3,7 @@ import os
 import pandas as pd
 def generate_dataframe():
     # Root path is the source folder, other declerations are temp lists and the dataframe decleration
-    root_path = 'SoundFilesPrep/'
+    root_path = 'Stem-SeperationDL\SoundFilesPrep'
     temp_list = []
     temp_list1 = []
     dataframe_list = []

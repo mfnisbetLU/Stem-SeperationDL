@@ -2,10 +2,10 @@
 # Currently use as a place to test functions
 
 # Import functions from another file
-from preprocess_slicer import *
+from generate_dataframe import *
+from batch_preprocess import *
 
-audio_file = "Stem-SeperationDL\SoundFiles\Al James - Schoolboy Facination\mixture.wav"
-
-new_file = audio_preprocess(audio_file,0,30000)
-
-new_file.export("Stem-SeperationDL/NewMix.wav", format="wav")
+# Process all the audio files then generate a dataframe
+batch_preprocess()
+df = generate_dataframe()
+print(df)
