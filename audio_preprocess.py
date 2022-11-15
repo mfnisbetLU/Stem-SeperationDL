@@ -6,6 +6,9 @@ https://stackoverflow.com/questions/37999150/how-to-split-a-wav-file-into-multip
 ''' 
 from pydub import AudioSegment, effects
 from scipy.io import wavfile
+import torch
+import torchaudio
+from torchaudio import transforms
 
 
 def audio_preprocess(audio_file,trim_start,trim_end):
@@ -20,7 +23,13 @@ def audio_preprocess(audio_file,trim_start,trim_end):
     trimmed_sound = sound[start_trim:duration]
     # Normalize the trimmed audio file
     normalized_sound = effects.normalize(trimmed_sound)
+    '''
+    # Resample the sound to the desired rate
+    resampled_sound = resample(normalized_sound,44100)
+    # Rechannel to stereo
+    stereo_sound = rechannel(resampled_sound, 2)
     # The new audio file trimmed from defined start and end
+    '''
     new_audio = normalized_sound[trim_start:trim_end]
     return new_audio
 
@@ -35,3 +44,32 @@ def leading_silence(sound, silence_threshold=-50.0, chunk_size=10):
         trim_ms += chunk_size
 
     return trim_ms
+
+'''
+# Resample the first then second channel and merges both channels
+# Function returns sound if in desired sample rate
+# Outputs a tensor
+def resample(sound, newrate):
+    sig, sr = sound
+    if (sr == newrate):
+        return sound
+    numchannels = sig.shape[0]
+    newsound = torchaudio.transforms.Resample(sr,newrate)(sig[:1,:])
+    if (numchannels > 1):
+        newsound2 = torchaudio.transforms.Resample(sr,newrate)(sig[1:,:])
+        reig = torch.cat([newsound, newsound2])
+    return(newsound)
+    
+# Function returns sound if in desired format (mono or stero) 
+# Function returns mono if stero and stereo if mono by selecting only the first channel or duplicating it
+# Outputs a tensor
+def rechannel(sound, numchannels):
+    sig, sr = torchaudio.load(sound)
+    if (sig.shape[0] == numchannels):
+        return sound
+    if(numchannels == 1):
+        newsound = sig[:1, :]
+    else:
+        newsond = torch.cat([sig,sig])
+    return(newsound)
+'''
