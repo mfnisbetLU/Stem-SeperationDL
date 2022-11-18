@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras
 from keras import callbacks
-from database_maker import generate_dataframe
+from generate_dataframe import generate_dataframe
 import librosa # for audio processing
 import numpy as np
 
@@ -103,6 +103,8 @@ for i in range(len(bass_arr)):
     bass_arr_test[i] = bass_arr_test[i]/(np.linalg.norm(bass_arr_test[i]))
     bass_arr_train[i] = bass_arr_train[i]/(np.linalg.norm(bass_arr_train[i]))
 print('Data normalized')
+
+
 
 
 # Set up data as np arrays
