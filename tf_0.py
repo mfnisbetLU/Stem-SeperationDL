@@ -105,6 +105,8 @@ for i in range(len(bass_arr)):
 print('Data normalized')
 
 
+
+
 # Set up data as np arrays
 mix_arr_test = np.asarray(mix_arr_test, dtype=object)
 mix_arr_train = np.asarray(mix_arr_train, dtype=object)
