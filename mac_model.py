@@ -7,7 +7,7 @@ import torch.nn.functional as F
 from torch.nn import init 
 import torch
 
-class AudioClassifier (nn.Module):
+class AudioClassifier (torch.nn.Module):
     def __init__(self):
         super().__init__()
         conv_layer = []

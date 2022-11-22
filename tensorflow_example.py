@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras
 from keras import callbacks
-from database_maker import generate_dataframe
+from generate_dataframe import generate_dataframe
 import librosa # for audio processing
 import numpy as np
 import pandas as pd
@@ -13,7 +13,7 @@ import sklearn.preprocessing as preprocessing
 #          https://www.codespeedy.com/determine-input-shape-in-keras-tensorflow/
 
 
-# Generate dataframe of audio file locations with database_maker function
+# Generate dataframe of audio file locations with generate_dataframe function
 df = generate_dataframe()
 
 

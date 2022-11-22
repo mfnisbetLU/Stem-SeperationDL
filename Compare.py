@@ -1,5 +1,3 @@
-!apt install ffmpeg
-pip install stempeg
 import stempeg
 import matplotlib.pyplot as plt
 import numpy as np
