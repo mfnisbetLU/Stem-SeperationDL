@@ -3,6 +3,7 @@ This script takes a wave file, detects and removes any leading silence, normaliz
 Code based on the answers found here:
 https://stackoverflow.com/questions/29547218/remove-silence-at-the-beginning-and-at-the-end-of-wave-files-with-pydub
 https://stackoverflow.com/questions/37999150/how-to-split-a-wav-file-into-multiple-wav-files
+The functions that are commented out would be useful if the audio has different sample rates and are mono+stereo
 ''' 
 from pydub import AudioSegment, effects
 from scipy.io import wavfile

@@ -1,6 +1,7 @@
 '''
 Setting up neural network, code based on the walkthrough from here:
 https://towardsdatascience.com/audio-deep-learning-made-simple-sound-classification-step-by-step-cebc936bbe5
+Currently Unused
 '''
 
 import torch.nn.functional as F 

@@ -1,6 +1,13 @@
+'''
+Generates a dataframe based on the folders from SoundFilesPrep, generate_dataframe2 from TestFilesPrep (never called)
+Could be modified
+'''
+
 # Import declerations
 import os
 import pandas as pd
+
+
 def generate_dataframe():
     # Root path is the source folder, other declerations are temp lists and the dataframe decleration
     root_path = 'Stem-SeperationDL\SoundFilesPrep'
