@@ -1,3 +1,7 @@
+'''
+Reconstructs a signal based on a spectrogram
+currently unused
+'''
 from scipy.signal import stft, istft
 import numpy as np
 

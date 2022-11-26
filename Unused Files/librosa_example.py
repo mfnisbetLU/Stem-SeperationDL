@@ -1,3 +1,7 @@
+'''
+Generates STFT from a wave file
+Currently unused
+'''
 import matplotlib.pyplot as plt
  
 import librosa

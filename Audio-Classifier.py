@@ -1,3 +1,8 @@
+'''
+NOTE: Since we are not displaying any graphs here we do not need librosa.display
+features_extractor function and model based off code from here: https://www.analyticsvidhya.com/blog/2022/03/implementing-audio-classification-project-using-deep-learning/
+Useful function: print(df.to_string()) prints every value without ellipses shortening       
+'''
 import tensorflow as tf
 from tensorflow import keras
 from keras import Sequential
@@ -10,12 +15,7 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from datetime import datetime 
 from audio_preprocess import *
-'''
-NOTE: Since we are not displaying any graphs here we do not need librosa.display
-features_extractor and model based off code from here: https://www.analyticsvidhya.com/blog/2022/03/implementing-audio-classification-project-using-deep-learning/
-Useful function: print(df.to_string()) prints every value without ellipses shortening       
 
-'''
 # Generate dataframe of audio file locations with generate_dataframe function
 # The first value is just the parent folder for some reason so drop that
 old_df = generate_dataframe()
@@ -120,8 +120,10 @@ model.add(tf.keras.layers.Dropout(0.5))
 model.add(tf.keras.layers.Dense(num_labels))
 model.add(tf.keras.layers.Activation('softmax'))
 
+# Loss categorical_crossentropy, binary_crossentropy, poisson
+# Optimizers Adam, Nadam, SGD, Adagrad, RMSprop
 # Compile and summarize the model
-model.compile(loss='categorical_crossentropy',metrics=['accuracy'],optimizer='adam')
+model.compile(loss='categorical_crossentropy', metrics=['accuracy'],optimizer='Adam')
 model.summary()
 
 # Training the model, 200 epochs seems to work better than 100
@@ -159,7 +161,7 @@ Even though there are save/load functions keras has not resolved the issue yet
 So the testing must be done in the same file
 '''
 # Import the test file
-Test_File="Stem-SeperationDL\TestFilesPrep\Arise - Run Run Run\drums.wav"
+Test_File="Stem-SeperationDL\TestFilesPrep\AM Contra - Heart Peripheral\\vocals.wav"
 # Process audio and convert to mfcc like above
 audio, sample_rate = librosa.load(Test_File, res_type='kaiser_fast') 
 mfccs_features = librosa.feature.mfcc(y=audio, sr=sample_rate, n_mfcc=40)
@@ -168,7 +170,7 @@ mfccs_scaled_features = np.mean(mfccs_features.T,axis=0)
 # Reshape MFCC feature to 2-D array
 mfccs_scaled_features=mfccs_scaled_features.reshape(1,-1)
 
-# Predict the label using th emodel
+# Predict the label using the model
 x_predict=model.predict(mfccs_scaled_features) 
 predicted_label=np.argmax(x_predict,axis=1)
 print(predicted_label)

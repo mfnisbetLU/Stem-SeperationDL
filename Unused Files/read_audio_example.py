@@ -1,3 +1,7 @@
+'''
+Reads an audio file and plots it
+Currently unused
+'''
 import matplotlib.pyplot as plt
 import numpy as np
 import wave, sys

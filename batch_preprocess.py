@@ -1,6 +1,7 @@
 '''
 This function makes a new folder for each existing folder in the SoundFiles directory, then calls the audio_preprocess function
 and puts them into their respective folders, ready for model training
+Warning: deletes before copying, don't run unless doing preprocessing
 '''
 import os
 import shutil

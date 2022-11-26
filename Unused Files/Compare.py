@@ -1,3 +1,7 @@
+'''
+Compares the frequency values of stempeg and librosa files 
+Currently unused
+'''
 import stempeg
 import matplotlib.pyplot as plt
 import numpy as np

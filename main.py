@@ -1,5 +1,7 @@
-# This is where the main function and GUI should probably go
-# Currently use as a place to test functions
+'''
+This is the script that would call our other functions and would hold the GUI
+Currently used as a placeholder to test functions
+'''
 
 # Import functions from another file
 from generate_dataframe import *
